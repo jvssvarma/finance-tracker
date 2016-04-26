@@ -1,0 +1,22 @@
+== README
+
+Hello Everyone! This is Finance Tracker App. Instructions to build the app will be updated soon.
+
+
+Things that will be covered:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions

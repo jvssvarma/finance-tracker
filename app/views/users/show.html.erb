@@ -1,4 +1,10 @@
-<h2> <%= "#{@user.full_name.upcase}" %>'s Profile </h2>
+<h2> <%= "#{@user.full_name.upcase}" %>'s Profile &nbsp;
+	<% if current_user.not_friends_with?(@user.id) %>
+    <%= link_to "add friend", add_friend_path(user: current_user, friend: @user), 
+		class: "btn btn-xs btn-success", method: :post %>
+    <% end %> 
+</h2>
+
 
 <dl class="dl-horizontal">
 	<dt><strong>NAME</strong></dt>

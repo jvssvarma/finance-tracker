@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		@users = User.search(params[:search_param])
 		if @users
 			@users = current_user.except_current_user(@users)
-			render partial 'friends/lookup'
+			render partial: 'friends/lookup'
 		else
 			render status: :not_found, nothing: true
 		end
@@ -21,12 +21,17 @@ class UsersController < ApplicationController
 
 	def add_friend
 		@friend = User.find(params[:friend])
-		current_user.friendships.build(friend_id: @friend_id)
+		current_user.friendships.build(friend_id: @friend.id)
 		if current_user.save
-			redirect_to my_friends_path, notice: "#{friend.full_name} successfully added to your friends"
+			redirect_to my_friends_path, notice: "#{@friend.full_name} successfully added to your friends"
 		else
-			redirect_to my_friends_path, flash[:error] = "Error adding #{friend.full_name} as friend"
+			redirect_to my_friends_path, flash[:error] = "Error adding #{@friend.full_name} as friend"
 		end
+	end
+
+	def show
+		@user = User.find(params[:id])
+		@user_stocks = @user.stocks
 	end
 
 end

@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
    end
 
    def except_current_user(users)
-    users.reject { |user| user.id = self.id }
+    users.reject { |user| user.id == self.id }
    end
 
    def self.search(param)
